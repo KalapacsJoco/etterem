@@ -1,0 +1,60 @@
+/* A görgetősáv teljes eltüntetése */
+body {
+  overflow-y: hidden; /* Függőleges görgetősáv eltüntetése */
+}
+
+/* Ha csak a görgetősávot akarod elrejteni, de a görgetési funkciót megtartani */
+body::-webkit-scrollbar {
+  display: none; /* A görgetősáv elrejtése Webkit-alapú böngészőkben (Chrome, Safari) */
+}
+
+body {
+  -ms-overflow-style: none;  /* A görgetősáv elrejtése az Internet Explorer és az Edge böngészőkben */
+  scrollbar-width: none;  /* A görgetősáv elrejtése a Firefox böngészőkben */
+}
+
+
+
+.modifyUser-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background: transparent;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .modifyInput {
+    border: 1px solid rgba(243, 244, 246, 0.75); /* Tailwind színkód */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.4rem; /* p-4 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    background-color: rgba(255, 255, 255, 0.1); /* bg-transparent */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  
+  }
+
+  .modifyInput:hover {
+    background-color: rgba(55, 65, 81, 1); /* hover:bg-gray-700 */
+    border-color: rgba(156, 163, 175, 1); /* focus:ring-gray-400 */
+    box-shadow: 0 4px 6px rgba(55, 65, 81, 0.75); /* focus:ring-opacity-75 */
+}
+
+footer {
+  background-color: #6b7280; /* bg-gray-500 */
+  padding: 1rem; /* p-4 */
+  color: white; /* text-white */
+  margin-top: 1rem; /* mt-4 */
+  opacity: 80;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+footer:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
