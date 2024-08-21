@@ -1,6 +1,6 @@
 <?php
-include_once '../models/Dish.php';
-include_once '../models/User.php';
+include_once __DIR__ . '/../models/Dish.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
+include_once __DIR__ . '/../models/User.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
 session_start();
 $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 $user = $userId ? User::findById($userId) : null;
@@ -44,7 +44,7 @@ ob_start();
                             </td>
 
                             <td>
-                                <form action="../includes/deleteDish.php" method="POST">
+                                <form action="/etterem/includes/deleteDish" method="POST">
                                 <input type="hidden" name="delete_dish_id" value="<?php echo $item->getId(); ?>">
                                 <button type="submit" name="deleteDish" class="text-red-100 bg-transparent border border-red-500 rounded-lg shadow hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 px-4  ml-4 my-2 transition-colors duration-200">
                                     Törlés
@@ -71,7 +71,7 @@ ob_start();
             </span> <br>
             </div>
 
-        <form action="../controllers/order.controller.php" method= "POST" >
+        <form action="/etterem/controllers/order" method= "POST" >
             <label class="inline-flex items-center">
                 <input type="radio" name="delivery_type" value="delivery" class="form-checkbox" checked>
                 <span class="ml-2">Házhoz kérem</span>
@@ -143,7 +143,7 @@ ob_start();
 
     <input class="modifyInput" type="submit" value="Módosítás">
 </form>
-<script src="order.view.js"></script>
+<script src="/etterem/view/order.view.js"></script>
 
 
 

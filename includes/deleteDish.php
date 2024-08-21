@@ -1,5 +1,5 @@
 <?php
-include_once '../models/Dish.php';
+include_once __DIR__ . '/../models/Dish.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteDish'])) {
@@ -24,5 +24,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteDish'])) {
 }
 
 // Visszairányítjuk a felhasználót az order.view.php oldalra
-header("Location: ../view/order.view.php");
+header("Location: /etterem/view/order");
 exit();

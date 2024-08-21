@@ -1,8 +1,6 @@
 <?php
-include_once __DIR__ . '/../models/Database.php';
-include_once __DIR__ . '/../models/Order.php';
-include_once __DIR__ . '/../models/User.php';
-include_once __DIR__ . '/../models/Dish.php';
+include_once __DIR__ . '/../models/Database.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
+include_once __DIR__ . '/../models/Dish.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dish_id'])) {
@@ -35,30 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dish_id'])) {
         $_SESSION['success'] = 'Az étel sikeresen hozzáadva a kosárhoz.';
     } else {
         $_SESSION['error'] = 'Az étel nem található.';
-    }
-
-    if ($userId) {
-        $total = 0;
-        $deliveryType = isset($_POST['delivery_type']) ? $_POST['delivery_type'] : '';
-        $deliveryTime = isset($_POST['expected-time']) ? $_POST['expected-time'] : '';
-
-        // Számítsuk ki a teljes összeget
-        foreach ($_SESSION['cart'] as $dish) {
-            if ($dish instanceof Dish) {
-                $total += (int)$dish->getPrice() * $dish->getQty();  // Javítva: $qty -> $dish->getQty()
-            }
-        }
-
-        // Hozzunk létre egy új Order objektumot és mentsük el a rendelést
-        $order = new Order($userId, $dishId, $qty, $deliveryType);
-
-        if ($order->save()) {
-            // Rendelési tételek mentése az order_items táblába
-            $order->saveOrderItems($_SESSION['cart']);
-            $_SESSION['success'] = 'A rendelés és a tételek sikeresen elmentve.';
-        } else {
-            $_SESSION['error'] = 'Hiba történt a rendelés mentése közben.';
-        }
     }
 } else {
     echo "gaz van";

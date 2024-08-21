@@ -1,7 +1,8 @@
 <?php
 session_start();
-include_once '../models/Database.php';
-include_once '../models/User.php';
+include_once __DIR__ . '/../models/Database.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
+include_once __DIR__ . '/../models/User.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = isset($_POST["email"]) ? trim($_POST["email"]) : '';
@@ -19,19 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
 
         if ($_SESSION['user']['isAdmin']) {
-            header("Location: ../view/admin.php");
+            header("Location: /etterem/view/admin");
             exit();
         } else {
-            header("Location: ../view/dishes.view.php");
+            header("Location: /etterem/view/dishes");
             exit();
         }
     } else {
         $_SESSION['login_error'] = 'Helytelen email vagy jelszó';
-        header("Location: ../view/login.php");
+        header("Location: /etterem/view/login");
         exit();
     }
 } else {
-    header("Location: ../view/login.php");
+    header("Location: /etterem/view/login");
     exit();
 }
 ?>

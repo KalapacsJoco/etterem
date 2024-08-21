@@ -15,9 +15,14 @@ if (session_status() === PHP_SESSION_NONE) {
 </style>
 
 <section class="dishes flex flex-col items-center space-y-4 horizontal vertical">
+
+
+    
+
     <?php if (!empty($dishes) && !empty($images)) : ?>
         <?php foreach ($dishes as $index => $dish) : ?>
             <?php if (isset($images[$index])) : ?>
+
                 <div class="border border-gray-100 text-gray-100  rounded-lg shadow w-auto mx-auto flex">
                     <div class="w-1/2 h-full">
                         <img src="<?php echo htmlspecialchars($images[$index]); ?>" alt="<?php echo htmlspecialchars($dish->name); ?>" class="w-full h-full rounded-2xl object-fill">
@@ -47,7 +52,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                 </form>
                             </form>    
                         <?php else : ?>
-                            <form method="POST" action="../../controllers/order.controller.php">
+                            <form method="POST" action="/etterem/controllers/cart">
                                 <input type="hidden" name="dish_id" value="<?php echo $dish->id; ?>">
                                 <button  type="submit" class="order-button text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-1">
                                     Kosárba

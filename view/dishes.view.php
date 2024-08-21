@@ -1,8 +1,11 @@
 <?php
-include_once '../controllers/dishes.controller.php';
+include_once __DIR__ . '/../controllers/dishes.controller.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
 session_start();
-$imageDir = 'img/foods/';
+$imageDir = __DIR__ . '/img/foods/';
 $images = glob($imageDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+
+
+
 
 $title = 'Menü';
 ob_start();

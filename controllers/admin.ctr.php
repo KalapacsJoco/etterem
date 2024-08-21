@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-include_once '../models/Database.php';
+include_once __DIR__ . '/../models/Database.php';
 include_once '../models/models/Dish.php';
 
 if (!isset($_SESSION['user']) || !$_SESSION['user']['isAdmin']) {

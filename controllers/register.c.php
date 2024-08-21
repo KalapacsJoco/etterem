@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once '../models/Database.php';
-include_once '../models/User.php';
+include_once __DIR__ . '/../models/Database.php';
+include_once __DIR__ . '/../models/User.php';
 
 $errors = [];
 $inputValues = [];
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['inputValues'] = $inputValues;
     }
 
-    header("Location: ../view/register.php");
+    header("Location: /etterem/login");
     exit();
 } else {
     echo 'Nem fasza amit csinálsz!';

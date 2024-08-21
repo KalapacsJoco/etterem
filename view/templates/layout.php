@@ -27,10 +27,10 @@ $userName = $isLoggedIn ? $_SESSION['user']['name'] : '';
             <div class="flex items-center space-x-4">
                 <span class="pr-4"><?php echo htmlspecialchars("Üdv újra " . $userName); ?></span>
 
-                <a href="../../includes/logout.php" class="text-red-100 bg-transparent border border-red-100 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 px-6 py-1">Kijelentkezés</a>
+                <a href="/etterem/includes/logout" class="text-red-100 bg-transparent border border-red-100 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 px-6 py-1">Kijelentkezés</a>
             </div>
 
-            <a href="../order.view.php" id="toggleCartButton" class="mt-64 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">
+            <a href="/etterem/view/order" id="toggleCartButton" class="mt-64 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">
                 Kosár tartalma<span id="cartNumber" class="text-sm">
                     <script>
                         // PHP által generált adat beillesztése egy globális változóba
@@ -42,8 +42,8 @@ $userName = $isLoggedIn ? $_SESSION['user']['name'] : '';
 
 
         <?php else: ?>
-            <a href="../login.php" class="mt-12 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">Bejelentkezés</a>
-            <a href="../register.php" class="mt-12 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">Regisztrálás</a>
+            <a href="/etterem/login" class="mt-12 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">Bejelentkezés</a>
+            <a href="/etterem/register" class="mt-12 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">Regisztrálás</a>
         <?php endif; ?>
     </div>
 

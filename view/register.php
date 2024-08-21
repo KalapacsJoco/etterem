@@ -16,7 +16,7 @@ ob_start();
     </div>
 <?php endif; ?>
 
-<form action="../controllers/register.c.php" method="POST" class="w-full max-w-md mx-auto p-6 text-gray-100 pl-4 border border-gray-100 rounded-lg">
+<form action="/etterem/controllers/register" method="POST" class="w-full max-w-md mx-auto p-6 text-gray-100 pl-4 border border-gray-100 rounded-lg">
     <input type="text" name="firstName" class="w-full p-2 border border-gray-300 rounded-md caret-amber-100 bg-transparent placeholder-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75" placeholder="Vezetéknév:" value="<?php echo htmlspecialchars($inputValues['firstName'] ?? ''); ?>">
     <input type="text" name="lastName" class="w-full p-2 border border-gray-300 rounded-md caret-amber-100 bg-transparent placeholder-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75" placeholder="Keresztnév:" value="<?php echo htmlspecialchars($inputValues['lastName'] ?? ''); ?>">
     <input type="email" name="email" class="w-full p-2 border border-gray-300 rounded-md caret-amber-100 bg-transparent placeholder-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75" placeholder="Add meg az email címed:" value="<?php echo htmlspecialchars($inputValues['email'] ?? ''); ?>">

@@ -1,5 +1,5 @@
 <?php
-include_once 'Database.php';
+include_once __DIR__ . '/../models/Database.php';
 
 class Order {
     private $id;
