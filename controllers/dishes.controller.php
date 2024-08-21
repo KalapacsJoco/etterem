@@ -1,5 +1,5 @@
 <?php
-include_once 'Dish.php';
+include_once '../models/Dish.php';
 
 
 // Fetch all dishes from the model

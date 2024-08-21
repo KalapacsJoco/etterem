@@ -1,5 +1,5 @@
 <?php
-include_once 'dishes.controller.php';
+include_once '../controllers/dishes.controller.php';
 session_start();
 $imageDir = 'img/foods/';
 $images = glob($imageDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
@@ -30,5 +30,5 @@ ob_start();
     <?php
          include 'templates/dishCard.php';
     $content = ob_get_clean();
-    include 'layout.php';
+    include 'templates/layout.php';
     ?>

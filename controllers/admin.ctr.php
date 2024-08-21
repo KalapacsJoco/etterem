@@ -4,11 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-include_once 'Database.php';
-include_once 'Dish.php';
+include_once '../models/Database.php';
+include_once '../models/models/Dish.php';
 
 if (!isset($_SESSION['user']) || !$_SESSION['user']['isAdmin']) {
-    header("Location: index.php");
+    header("Location: ../view/index.php");
     exit();
 }
 
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($dish->save()) {
             $_SESSION['success'] = 'Az étel sikeresen létrehozva';
-            header("Location: admin.php");
+            header("Location: ../view/admin.php");
             exit();
         } else {
             $errors[] = 'Hiba történt az étel létrehozása során';
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         print_r($_SESSION);
         echo "</pre>";
         $_SESSION['errors'] = $errors;
-        header("Location: admin.php");
+        header("Location: ../view/admin.php");
         exit();
     }
     

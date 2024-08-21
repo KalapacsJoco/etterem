@@ -18,7 +18,7 @@ class Database {
         }
     }
 
-    protected function getPDO() {
+    public function getPDO() {
         return $this->pdo;
     }
 
@@ -48,3 +48,4 @@ class Database {
         return $stmt->execute($params);
     }
 }
+?>

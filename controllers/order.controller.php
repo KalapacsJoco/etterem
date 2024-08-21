@@ -1,8 +1,8 @@
 <?php
-include_once 'Database.php';
-include_once 'Order.php';
-include_once 'User.php';
-include_once 'Dish.php';
+include_once '../models/Database.php';
+include_once '../models/Order.php';
+include_once '../models/User.php';
+include_once '../models/Dish.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dish_id'])) {
@@ -65,6 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dish_id'])) {
 }
 
 // Visszairányítjuk a felhasználót az étel oldalára
-header("Location: dishes.view.php");
+header("Location: ../view/dishes.view.php");
 exit();
 ?>

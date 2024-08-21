@@ -1,5 +1,5 @@
 <?php
-include_once 'Dish.php';
+include_once '../models/Dish.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteDish'])) {
@@ -24,5 +24,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteDish'])) {
 }
 
 // Visszairányítjuk a felhasználót az order.view.php oldalra
-header("Location: order.view.php");
+header("Location: ../view/order.view.php");
 exit();

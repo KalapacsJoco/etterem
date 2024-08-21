@@ -1,7 +1,7 @@
 <?php
 
-include_once 'User.php';
-include_once 'Database.php';
+include_once '../models/User.php';
+include_once '../models/Database.php';
 session_start();
 
 $errors = [];
@@ -63,7 +63,7 @@ if ($userId) {
             $_SESSION['errors'] = $errors;
         }
 
-        header("Location: order.view.php");
+        header("Location: ../view/order.view.php");
         exit();
     }
 } else {

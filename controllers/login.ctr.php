@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'Database.php';
-include_once 'User.php';
+include_once '../models/Database.php';
+include_once '../models/User.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = isset($_POST["email"]) ? trim($_POST["email"]) : '';
@@ -19,19 +19,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
 
         if ($_SESSION['user']['isAdmin']) {
-            header("Location: admin.php");
+            header("Location: ../view/admin.php");
             exit();
         } else {
-            header("Location: dishes.view.php");
+            header("Location: ../view/dishes.view.php");
             exit();
         }
     } else {
         $_SESSION['login_error'] = 'Helytelen email vagy jelszó';
-        header("Location: login.php");
+        header("Location: ../view/login.php");
         exit();
     }
 } else {
-    header("Location: login.php");
+    header("Location: ../view/login.php");
     exit();
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'Database.php';
-include_once 'User.php';
+include_once '../models/Database.php';
+include_once '../models/User.php';
 
 $errors = [];
 $inputValues = [];
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($user->save()) {
             $_SESSION['success'] = 'Regisztráció sikeres';
-            header("Location: index.php");
+            header("Location: ../view/index.php");
             exit();
         } else {
             $errors[] = 'Hiba történt a regisztráció során';
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['inputValues'] = $inputValues;
     }
 
-    header("Location: register.php");
+    header("Location: ../view/register.php");
     exit();
 } else {
     echo 'Nem fasza amit csinálsz!';

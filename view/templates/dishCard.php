@@ -40,14 +40,14 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <button type="submit" class="text-green-100 bg-transparent border border-green-100 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 px-6 py-3">
                                     Módosítás
                                 </button>
-                                <form action="order.controller.php">
+                                <form action="../../controllers/order.controller.php">
                                     <button type="submit" class="text-red-100 bg-transparent border border-red-100 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 px-6 py-3">
                                         Törlés
                                     </button>
                                 </form>
                             </form>    
                         <?php else : ?>
-                            <form method="POST" action="order.controller.php">
+                            <form method="POST" action="../../controllers/order.controller.php">
                                 <input type="hidden" name="dish_id" value="<?php echo $dish->id; ?>">
                                 <button  type="submit" class="order-button text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-1">
                                     Kosárba

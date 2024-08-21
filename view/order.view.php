@@ -1,6 +1,6 @@
 <?php
-include_once 'Dish.php';
-include_once 'User.php';
+include_once '../models/Dish.php';
+include_once '../models/User.php';
 session_start();
 $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 $user = $userId ? User::findById($userId) : null;
@@ -32,7 +32,7 @@ ob_start();
                         <tr>
                             <td><?php echo htmlspecialchars($item->getName()); ?></td>
                             <td>
-                                <form action="order.controller.php" method= "POST" >
+                                <form action="../controllers/order.controller.php" method= "POST" >
                                     <input name="qty" class="w-16 caret-amber-100 bg-transparent placeholder-gray-100 text-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 quantity-input text-center" 
                                     type="number" value="<?php echo htmlspecialchars($item->getQty()); ?>" min="0" max="99" data-price="<?php echo $item->getPrice(); ?>" data-item-total>
                                 </form>
@@ -44,7 +44,7 @@ ob_start();
                             </td>
 
                             <td>
-                                <form action="deleteDish.php" method="POST">
+                                <form action="../includes/deleteDish.php" method="POST">
                                 <input type="hidden" name="delete_dish_id" value="<?php echo $item->getId(); ?>">
                                 <button type="submit" name="deleteDish" class="text-red-100 bg-transparent border border-red-500 rounded-lg shadow hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 px-4  ml-4 my-2 transition-colors duration-200">
                                     Törlés
@@ -71,7 +71,7 @@ ob_start();
             </span> <br>
             </div>
 
-        <form action="order.controller.php" method= "POST" >
+        <form action="../controllers/order.controller.php" method= "POST" >
             <label class="inline-flex items-center">
                 <input type="radio" name="delivery_type" value="delivery" class="form-checkbox" checked>
                 <span class="ml-2">Házhoz kérem</span>
@@ -125,7 +125,7 @@ ob_start();
     </div>
 <?php endif; ?>
 
-<form class="modifyUser-form" action="modifyUser.controller.php" method="POST">
+<form class="modifyUser-form" action="../controllers/modifyUser.controller.php" method="POST">
     <label for="firstName">Vezetéknév:</label>
     <input class="modifyInput" type="text" name="firstName" value="<?php echo htmlspecialchars($user->getFirstName()); ?>"><br>
 
@@ -154,5 +154,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-include 'layout.php';
+include 'templates/layout.php';
 ?>

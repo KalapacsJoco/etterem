@@ -6,5 +6,5 @@ ob_start();
 <p>This is the content of the home page.</p>
 <?php
 $content = ob_get_clean();
-include 'layout.php';
+include 'view/templates/layout.php';
 ?>
