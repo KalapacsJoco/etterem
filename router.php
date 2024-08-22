@@ -3,7 +3,7 @@
 // Lekérdezzük az aktuális URL-t
 $request = $_SERVER['REQUEST_URI'];
 
-// A statikus fájlok közvetlen kiszolgálása
+// Statikus fájlok közvetlen kiszolgálása
 if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $request)) {
     $filePath = __DIR__ . $request;
     if (file_exists($filePath)) {

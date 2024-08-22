@@ -143,7 +143,7 @@ ob_start();
 
     <input class="modifyInput" type="submit" value="Módosítás">
 </form>
-<script src="etterem/assets/order.view.js"></script>
+<script src="/assets/order.view.js"></script>
 
 
 
