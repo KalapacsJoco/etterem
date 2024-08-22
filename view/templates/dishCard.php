@@ -17,15 +17,14 @@ if (session_status() === PHP_SESSION_NONE) {
 <section class="dishes flex flex-col items-center space-y-4 horizontal vertical">
 
 
-    
+
 
     <?php if (!empty($dishes) && !empty($images)) : ?>
         <?php foreach ($dishes as $index => $dish) : ?>
             <?php if (isset($images[$index])) : ?>
-
                 <div class="border border-gray-100 text-gray-100  rounded-lg shadow w-auto mx-auto flex">
                     <div class="w-1/2 h-full">
-                        <img src="<?php echo htmlspecialchars($images[$index]); ?>" alt="<?php echo htmlspecialchars($dish->name); ?>" class="w-full h-full rounded-2xl object-fill">
+                    <img src="<?php echo str_replace('/var/www/etterem', '', $images[$index]); ?>" alt="<?php echo htmlspecialchars($dish->name); ?>">
                     </div>
 
                     <div class="w-1/2 pl-4 flex flex-col justify-center items-center">

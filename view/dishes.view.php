@@ -6,7 +6,6 @@ $images = glob($imageDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
 
 
-
 $title = 'Menü';
 ob_start();
 ?>
