@@ -1,9 +1,21 @@
 <?php
-// router.php
 
 // Lekérdezzük az aktuális URL-t
 $request = $_SERVER['REQUEST_URI'];
 
+// A statikus fájlok közvetlen kiszolgálása
+if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $request)) {
+    $filePath = __DIR__ . $request;
+    if (file_exists($filePath)) {
+        header("Content-Type: " . mime_content_type($filePath));
+        readfile($filePath);
+        exit;
+    } else {
+        http_response_code(404);
+        echo "File not found!";
+        exit;
+    }
+}
 
 // A request alapján eldöntjük, melyik fájl szolgálja ki a kérést
 switch ($request) {
@@ -41,11 +53,10 @@ switch ($request) {
         require __DIR__ . '/controllers/order.php';
         break;
 
-
     default:
         // Ha bármilyen más URL van, irányítsd az index.php fájlra
-        require __DIR__ . '/indeax.php';
-        var_dump(__DIR__);
+        http_response_code(404);
+        echo "Page not found!";
         break;
 }
 ?>

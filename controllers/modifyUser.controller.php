@@ -1,7 +1,7 @@
 <?php
 
-include_once '../models/User.php';
-include_once '../models/Database.php';
+include_once __DIR__ . '/../models/Database.php'; 
+include_once __DIR__ . '/../models/User.php';
 session_start();
 
 $errors = [];
@@ -63,7 +63,7 @@ if ($userId) {
             $_SESSION['errors'] = $errors;
         }
 
-        header("Location: ../view/order.view.php");
+        header("Location: /etterem/view/order");
         exit();
     }
 } else {
