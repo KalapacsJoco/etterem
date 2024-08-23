@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ellenőrizzük, hogy az oldal tartalmazza-e a 'cart' osztályú elemet
     if (document.querySelector('.cart')) {
         toggleCartButton.innerHTML = 'Vissza az étlapra';
-        toggleCartButton.href = "dishes.view.php";  // Átirányítás az étlap oldalra
+        toggleCartButton.href = "/etterem/view/dishes";  // Átirányítás az étlap oldalra
     }
 
     // Számolja az aktuális kosár összes tételét

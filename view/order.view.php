@@ -125,7 +125,7 @@ ob_start();
     </div>
 <?php endif; ?>
 
-<form class="modifyUser-form" action="../controllers/modifyUser.controller.php" method="POST">
+<form class="modifyUser-form" action="/etterem/controllers/modifyUser" method="POST">
     <label for="firstName">Vezetéknév:</label>
     <input class="modifyInput" type="text" name="firstName" value="<?php echo htmlspecialchars($user->getFirstName()); ?>"><br>
 

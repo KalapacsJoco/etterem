@@ -1,9 +1,9 @@
 <?php
-include_once '../models/Dish.php';
+include_once __DIR__ . '/../models/Dish.php';  // a __DIR__ a jelenlegi mappa (controllers) útvonalát adja
 $title = 'Admin Page';
 ob_start();
 
-$imageDir = 'img/foods/';
+$imageDir = __DIR__ . '/img/foods/';
 $images = glob($imageDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
 // Feltételezzük, hogy a $dishes változó már fel van töltve ételekkel, például az adatbázisból
@@ -12,7 +12,7 @@ $dishes = Dish::findAll(); // Ez egy példa arra, hogyan lehet lekérni az össz
 <button id="toggleFormButton"  class="fixed top-64 left-0 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">
     Új eledel felvétele
 </button>
-<form id="foodForm" action="../controllers/admin.ctr.php" method="POST" enctype="multipart/form-data" class=" hidden w-full max-w-md mx-auto p-6 text-gray-100 pl-4 border border-gray-100 rounded-lg">
+<form id="foodForm" action="/etterem/controllers/admin" method="POST" enctype="multipart/form-data" class=" hidden w-full max-w-md mx-auto p-6 text-gray-100 pl-4 border border-gray-100 rounded-lg">
     <div class="mb-4">
         <label for="name" class="w-full p-2 caret-amber-100 bg-transparent placeholder-gray-100">Étel neve:</label>
         <input type="text" name="name" id="name" class="w-full p-2 border border-gray-300 rounded-md caret-amber-100 bg-transparent placeholder-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75" required>
@@ -53,6 +53,7 @@ $dishes = Dish::findAll(); // Ez egy példa arra, hogyan lehet lekérni az össz
 </form>
 <?php
 include_once 'templates/dishCard.php';
+//  var_dump(isset($image[$index])); die;
 $content = ob_get_clean();
 include 'templates/layout.php';
 ?>
