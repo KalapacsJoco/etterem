@@ -1,7 +1,7 @@
 <?php
 
 class Database {
-    private $pdo;
+    public $pdo;
 
     protected static $host = 'localhost';
     protected static $dbname = 'etterem';

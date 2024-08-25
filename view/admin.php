@@ -7,9 +7,9 @@ $imageDir = __DIR__ . '/img/foods/';
 $images = glob($imageDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
 // Feltételezzük, hogy a $dishes változó már fel van töltve ételekkel, például az adatbázisból
-$dishes = Dish::findAll(); // Ez egy példa arra, hogyan lehet lekérni az összes ételt
+  $dishes = Dish::findAll(); // Ez egy példa arra, hogyan lehet lekérni az összes ételt
 ?>
-<button id="toggleFormButton"  class="fixed top-64 left-0 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">
+<button id="toggleFormButton" class="fixed top-64 left-0 text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3">
     Új eledel felvétele
 </button>
 <form id="foodForm" action="/etterem/controllers/admin" method="POST" enctype="multipart/form-data" class=" hidden w-full max-w-md mx-auto p-6 text-gray-100 pl-4 border border-gray-100 rounded-lg">
@@ -38,19 +38,8 @@ $dishes = Dish::findAll(); // Ez egy példa arra, hogyan lehet lekérni az össz
     <div class="flex items-center justify-between">
         <input type="submit" class="text-grey-100 bg-transparent border border-gray-100 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 px-6 py-3" value="Létrehozás">
     </div>
-    <script>
-        function updateFileName() {
-            const input = document.getElementById('fileInput');
-            const fileName = document.getElementById('fileName');
-
-            if (input.files.length > 0) {
-                fileName.textContent = input.files[0].name;
-            } else {
-                fileName.textContent = 'Nincs fájl kiválasztva';
-            }
-        }
-    </script>
 </form>
+
 <?php
 include_once 'templates/dishCard.php';
 //  var_dump(isset($image[$index])); die;
@@ -58,10 +47,22 @@ $content = ob_get_clean();
 include 'templates/layout.php';
 ?>
 <script>
+    function updateFileName() {
+        const input = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+
+        if (input.files.length > 0) {
+            fileName.textContent = input.files[0].name;
+        } else {
+            fileName.textContent = 'Nincs fájl kiválasztva';
+        }
+    }
+
+    const dishesSection = document.querySelector('.dishes');
+    const foodForm = document.getElementById('foodForm');
+    const buttontext = document.querySelector('#toggleFormButton');
+
     document.getElementById('toggleFormButton').addEventListener('click', function() {
-        const dishesSection = document.querySelector('.dishes');
-        const foodForm = document.getElementById('foodForm');
-        const buttontext = document.querySelector('#toggleFormButton');
 
         // Toggle the visibility of the dishes section and the form
         if (dishesSection.classList.contains('hidden')) {
@@ -73,5 +74,25 @@ include 'templates/layout.php';
             dishesSection.classList.add('hidden');
             foodForm.classList.remove('hidden');
         }
+    });
+
+    document.getElementById('editButton').addEventListener('click', function() {
+        // Dinamikusan beállított adatok PHP-ból JavaScript-be
+        console.dir($dish);
+        const dishData = {
+            name: "<?php echo htmlspecialchars($dish->getName(), ENT_QUOTES, 'UTF-8'); ?>",
+            price: "<?php echo $dish->getPrice(); ?>",
+            description: "<?php echo htmlspecialchars($dish->getDescription(), ENT_QUOTES, 'UTF-8'); ?>"
+        };
+
+        // Form input mezők beállítása a dishData alapján
+        document.getElementById('name').value = dishData.name;
+        document.getElementById('price').value = dishData.price;
+        document.getElementById('description').value = dishData.description;
+
+        // Form láthatóvá tétele
+        buttontext.innerHTML = 'Vissza a szerkesztéshez'; // Amikor a form látható
+        dishesSection.classList.add('hidden');
+        foodForm.classList.remove('hidden');
     });
 </script>

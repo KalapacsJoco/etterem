@@ -57,7 +57,7 @@ switch ($request) {
         require __DIR__ . '/controllers/order.php';
         break;
     case '/etterem/controllers/admin':
-        require __DIR__ . '/controllers/admin.php';
+        require __DIR__ . '/controllers/admin.ctr.php';
         break;
     case '/etterem/controllers/dishes':
         require __DIR__ . '/controllers/dishes.controller.php';

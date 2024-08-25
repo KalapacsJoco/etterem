@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['inputValues'] = $inputValues;
     }
 
-    header("Location: /etterem/login");
+    header("Location: /etterem/register");
     exit();
 } else {
     echo 'Nem fasza amit csinálsz!';

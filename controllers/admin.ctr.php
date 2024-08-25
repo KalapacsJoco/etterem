@@ -5,10 +5,10 @@ error_reporting(E_ALL);
 
 session_start();
 include_once __DIR__ . '/../models/Database.php';
-include_once '../models/models/Dish.php';
+include_once __DIR__ . '/../models/Dish.php';
 
 if (!isset($_SESSION['user']) || !$_SESSION['user']['isAdmin']) {
-    header("Location: ../view/index.php");
+    header("Location: /etterem/view/index");
     exit();
 }
 
@@ -79,12 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         print_r($_SESSION);
         echo "</pre>";
         $_SESSION['errors'] = $errors;
-        header("Location: ../view/admin.php");
+          header("Location: /etterem/view/admin");
         exit();
     }
-    
 } else {
-   var_dump($errors);
+    var_dump($errors);
     exit();
 }
-?>

@@ -78,9 +78,24 @@ class Dish {
         }
         return null;
     }
+    public static function findByName($name) {
+        $database = new Database();
+        $db = $database->getPDO();
+        $stmt = $db->prepare("SELECT * FROM dishes WHERE name = :name LIMIT 1");
+        $stmt->execute(['name' => $name]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            return new Dish($row['name'], $row['description'], $row['price'], $row['id']);
+        }
+        return null;
+    }
 
     public function getName() {
         return $this->name;
+    }
+    public function getDescription() {
+        return $this->description;
     }
     
     public function getPrice() {
